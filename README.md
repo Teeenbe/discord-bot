@@ -1,0 +1,2 @@
+# bottimus
+Discord bot
