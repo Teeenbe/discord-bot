@@ -30,7 +30,7 @@ These arrays will now look as follows:
     
 Now that the values are in a usable format, they're used as the parameters in the `new Date()` method, as aforementioned. Subbing in the example values, we would have this:
 
-    Function: new Date(year, month, day, hour, minute, second, millisecond)
+    Method: new Date(year, month, day, hour, minute, second, millisecond)
     
     reminderWhen = new Date(2019, 9, 28, 18, 30);   // The month value is zero-index, so its value will need to be one less than the user input
     
