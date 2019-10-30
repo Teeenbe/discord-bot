@@ -12,15 +12,12 @@ Fast forward to the current time and this predicament gave me inspiration for wh
 ### remindme - basics/essentials
 The command is as follows:
 
-    ```javascript
     |remindme <reminderTime> <reminderDate> <reminderText>
-    ```
-
+    
 An example of it in use may be:
 
-    ```javascript
     |remindme 18:30 28/10/2019 Fetch the pizza from the oven
-    ```
+    
     
 This input message will be converted into an array (`remindmeArgs`), split at each white space, which will look as such:
 
@@ -61,9 +58,11 @@ and in the context of this example would be:
     
 Putting this together then results in the following:
 
+```javascript
     setTimeout(function() {
             message.channel.send(reminderText);
         }, reminderWhen.getTime() - Date.now();
+```
         
 and the result would be a message from the bot in the same channel, reminding the user to fetch their pizza from the oven at 18:30 on Oct 28, 2019!
 
