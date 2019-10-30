@@ -21,28 +21,38 @@ An example of it in use may be:
     
 This input message will be converted into an array (`remindmeArgs`), split at each white space, which will look as such:
 
-    remindmeArgs = ['|remindme', '18:30', '28/10/2019', 'Fetch', 'the',...];
-    
+```javascript
+remindmeArgs = ['|remindme', '18:30', '28/10/2019', 'Fetch', 'the', 'pizza', 'from', 'the', 'oven'];
+```    
+
 The command prefix and keyword '`|remindme`' are removed from the array, as this value is no longer needed, then two more arrays are created - `reminderTime` and `reminderDate`, split at `:` and `/`, respectively. Since the original values are strings, `Array.map(Number)` is used to convert them so that they can be used in a `new Date()` instantiation, which - while it can take a string - is much more easily done with numerical values.
 
 These arrays will now look as follows:
 
-    reminderTime = [18, 30];
-    reminderDate = [28, 10, 2019];
+```javascript
+reminderTime = [18, 30];
+reminderDate = [28, 10, 2019];
+```
     
 Now that the values are in a usable format, they're used as the parameters in the `new Date()` method, as aforementioned. Subbing in the example values, we would have this:
 
-    Method: new Date(year, month, day, hour, minute, second, millisecond)
+```javascript
+// Method: new Date(year, month, day, hour, minute, second, millisecond)
     
-    reminderWhen = new Date(2019, 9, 28, 18, 30);   // The month value is zero-index, so its value will need to be one less than the user input
+reminderWhen = new Date(2019, 9, 28, 18, 30);   // The month value is zero-index, so its value will need to be one less than the user input
+```
     
 Following on from this, `Array.splice(...)` is used to take the text values from `reminderArgs` and `Array.join(' ')` forms it into a single string, storing it in `reminderText`:
 
-    reminderText = "Fetch the pizza from the oven";
+```javascript
+reminderText = "Fetch the pizza from the oven";
+```
 
 Having now performed all the calculations that are needed, use is made of the `setTimeout(function {}, milliseconds)` method to act as the timer between initial input and returning the message at the desired time. The function/first parameter here obviously consists of returning the message, which - in the case of the discord.js library, would simply be:
 
-    message.channel.send(reminderText);
+```javascript
+message.channel.send(reminderText);
+```
 
 Getting a working value for the `milliseconds` parameter is the real calculation here and takes a bit more critical thinking with a slight mathematical approach.
 
@@ -50,18 +60,22 @@ Consider that JavaScript measures time on the basis of how many milliseconds hav
 
 With this knowledge then, and given that the `milliseconds` parameter in the `setTimeout()` method is the number of milliseconds that passes before the code within the function is executed, an expression can be developed to calculate the necessary value. In essence, it is the number of milliseconds that passes between the time of execution and the time that the user wishes to be reminded, which is the exact value calculated by:
 
-    Date.getTime() - Date.now();
+```javascript
+Date.getTime() - Date.now();
+```
     
 and in the context of this example would be:
 
-    reminderWhen.getTime() - Date.now();
+```javascript
+reminderWhen.getTime() - Date.now();
+```
     
 Putting this together then results in the following:
 
 ```javascript
-    setTimeout(function() {
-            message.channel.send(reminderText);
-        }, reminderWhen.getTime() - Date.now();
+setTimeout(function() {
+        message.channel.send(reminderText);
+    }, reminderWhen.getTime() - Date.now();
 ```
         
 and the result would be a message from the bot in the same channel, reminding the user to fetch their pizza from the oven at 18:30 on Oct 28, 2019!
