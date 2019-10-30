@@ -12,11 +12,15 @@ Fast forward to the current time and this predicament gave me inspiration for wh
 ### remindme - basics/essentials
 The command is as follows:
 
+    ```javascript
     |remindme <reminderTime> <reminderDate> <reminderText>
+    ```
 
 An example of it in use may be:
 
+    ```javascript
     |remindme 18:30 28/10/2019 Fetch the pizza from the oven
+    ```
     
 This input message will be converted into an array (`remindmeArgs`), split at each white space, which will look as such:
 
