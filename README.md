@@ -8,7 +8,8 @@ For several years now, I have helped an online content creator with organising a
 
 Fast forward to the current time and this predicament gave me inspiration for where I should begin with my Discord bot - a reminder feature.
 
-# remindme - basics/essentials
+# How it works 
+## remindme - basics/essentials
 The command is as follows:
 
     |remindme <reminderTime> <reminderDate> <reminderText>
@@ -62,16 +63,16 @@ Putting this together then results in the following:
         
 and the result would be a message from the bot in the same channel, reminding the user to fetch their pizza from the oven at 18:30 on Oct 28, 2019!
 
-# (WIP) remindme - quality of life
+## (WIP) remindme - quality of life
 Discord is quite a sleek, modern application and it contains some cool features! One example of this is reactions. Users have the option of 'reacting' to another user's messages by essentially attaching available emojis of their choice to the message and the Discord API and discord.js library allow for this to be utilised by bots to provide extra functionality - in this case, confirmation of an issued command.
 
 # GOALS
-_**remindme:**_
+## remindme:
 Currently, my bot is being hosted from my PC, but not 24/7, and when I end execution of the code, the reminder data passes out of memory and is lost. This is the reason for my dabbling in the file-system Node module, as I propose that my way of working around this issue is by storing the server/channel IDs and message in a text file. The bot will run a check on start-up for any entries in said text file and then return any reminders that it may find back into execution.
 
 A simpler solution to this might be using a hosting service to ensure uptime - and that is what I eventually intend to do - but then there'd be no fallback if the bot was to go down for any reason, e.g: server maintenance. As such, it would be useful to implement this idea into my code anyway, and even if it shouldn't have any cause to be used at any point, the information/skills that I would have learnt in order to implement it will be invaluable for any future data-handling that I may be required to carry out.
 
-_**Audio streaming:**_
+## Audio streaming:
 Music bots are a popular service amongst the servers and users of Discord, and for good reason. Not only does it save you having to open your internet browser, or tab out of your game at all should you be using the Discord overlay, but it allows everyone else in the voice channel to listen to the playback at the same time if they wish to.
 
 At this current time I don't know much about the inner workings, aside from `ffmpeg` and `node-opus` installations. However, this is something that I'm curious to learn more about and it would also be a useful service to myself, if no one else.
