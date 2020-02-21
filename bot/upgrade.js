@@ -31,7 +31,7 @@ bot.on('guildDelete', guild => {
 
 
 bot.on('message', msg => {
-    // Sorting out the mongs on the Slurpers server
+    // Sorting out the muppets on the Slurpers server
     if (msg.channel.id === '332812456038760449' &&
     (msg.content.startsWith('!play') ||
     msg.content.startsWith('-play') ||
